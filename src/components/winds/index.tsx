@@ -7,13 +7,17 @@ import Image from "next/image";
 
 export default function Wind() {
   const { forecast } = useGlobalContext();
-  const { speed: windspeed, deg: windDir } = forecast?.wind ?? {};
 
-  if (!windspeed) {
+  const windSpeed = forecast?.wind?.speed;
+  const windDir = forecast?.wind?.deg;
+  console.log(windSpeed);
+  console.log(windDir);
+
+  if (!windSpeed || !windDir) {
     return (
       <Skeleton className="h-[12rem] w-full col-span-2 md:col-span-full" />
     );
-  } 
+  }
 
   return (
     <div className="wind h-[12rem] w-full col-span-full p-5 border-2 rounded-lg flex flex-col dark:bg-dark-grey shadow-sm dark:shadow-none">
@@ -21,18 +25,29 @@ export default function Wind() {
         <h2 className="flex items-center capitalize font-medium gap-2">
           {icons.wind} Wind
         </h2>
-        <p>{Math.round(windspeed)} m/s</p>
+        <p>{windSpeed}m/s</p>
       </div>
-      <div className="relative flex justify-center">
-        <Image
-          src="/compass.jpg"
-          width={100}
-          height={100}
-          priority
-          quality={100}
-          alt="compass"
-          className={`absolute top-2 rounded-full h-24 w-24 border-4 bg-yellow-500 p-2 border-white/90 transition-transform rotate-${windDir}`}
-        />
+      <div className="compass relative flex justify-center">
+        <div className="image relative">
+          <Image
+            src="/compass_body.svg"
+            width={110}
+            height={110}
+            alt="compass"
+            className="top-3 "
+          />
+          <Image
+            src="/compass_arrow.svg"
+            width={11}
+            height={11}
+            alt="compass"
+            className={`absolute top-0 left-[45%] transition-all duration-500 ease-in-out dark:invert`}
+            style={{
+              transform: `rotate(${windDir}deg) translateX(-50%)`,
+              height: "100%",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

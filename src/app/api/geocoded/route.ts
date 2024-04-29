@@ -3,19 +3,18 @@ import { NextRequest, NextResponse } from "next/server";
 export const GET = async (req: NextRequest) => {
   try {
     const searchParams = req.nextUrl.searchParams;
-    const lat = searchParams.get("lat");
-    const lon = searchParams.get("lon");
+    const city = searchParams.get("search");
     const ApiKey = process.env.OPEN_WEATHER_API_KEY;
 
     if (!ApiKey) {
       return NextResponse.json({ error: "API key not found" }, { status: 500 });
     }
+    const GeoCodedUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${ApiKey}`;
 
-    const CurrentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
-    const response = await fetch(CurrentWeatherUrl);
-
+    const response = await fetch(GeoCodedUrl);
     if (response.ok) {
-      return response
+      const data = await response.json();
+      return NextResponse.json(data);
     } else {
       return NextResponse.json(
         { error: "Request failed", status: response.status },
@@ -23,10 +22,10 @@ export const GET = async (req: NextRequest) => {
       );
     }
   } catch (error) {
-    console.error("Error fetching weather data:", error);
     return NextResponse.json(
       { error: "Error fetching weather data" },
-      { status: 500 }
+      { status: 500 } 
     );
   }
 };
+ 

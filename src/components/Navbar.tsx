@@ -6,22 +6,15 @@ import { useRouter } from "next/navigation";
 import { icons } from "@/lib/data";
 import { ThemeDropdown } from "./theme-dropdown/ThemeDropdown";
 import SearchBox from "./SearchBox";
-import { useGlobalContext } from "@/providers/globalContext";
 
 export default function Navbar() {
   const router = useRouter();
 
-  const { state: userInfo } = useGlobalContext();
   return (
-    <nav className=" py-5 h-16 place-content-center mb-20 px-10 fixed w-full">
-      <div className="flex items-center justify-between">
-        <div className="">
-          <Link href={"/"} className="text-white font-bold items-center">
-            Weather App
-          </Link>
-        </div>
-        <div className="flex items-center space-x-4 text-white">
-          <SearchBox />
+    <nav className="py-5 h-16 place-content-center mb-20 px-10 fixed w-full">
+      <div className="search-container flex items-center justify-center space-x-4">
+        <SearchBox />
+        <div className="btn-group flex items-center space-x-4 text-white">
           <ThemeDropdown />
           <Button
             className="font-bold gap-3"

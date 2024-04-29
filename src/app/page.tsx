@@ -1,24 +1,23 @@
 import Pollution from "@/components/air_pollution";
 import DailyForecast from "@/components/daily-forecast/DailyForecast";
-import Map from "@/components/map";
-import {Population} from "@/components/population";
+import Map from "@/components/custom_map";
+import { Population } from "@/components/population";
 import Sunset from "@/components/sunset";
 import Temperature from "@/components/temperature";
-import Uv from "@/components/uv";
 import Wind from "@/components/winds";
 import React from "react";
 
 export default function Home() {
   return (
     <React.Fragment>
-      <div className="wrapper flex flex-col lg:flex-row h-full justify-center">
+      <div className="wrapper flex flex-col lg:flex-row h-full justify-center items-center">
         <div className=" flex flex-col md:flex-row gap-4">
           <div className="min-w-[15rem] md:w-[14rem] flex flex-col gap-4 w-full rounded-md">
             <Wind />
-            <div className="rounded-md bg-gray-600 p-4 border shadow-sm dark:shadow-none">
+            <div className="rounded-md bg-gray-600 p-4 border shadow-sm dark:shadow-none h-[31rem]">
               <Temperature />
+              <Population />
             </div>
-            <Population />
           </div>
 
           <div className="flex flex-col md:w-[30rem]">
@@ -35,8 +34,8 @@ export default function Home() {
                         <Pollution />
                       </div>
                     </div>
+                    <Map />
                   </div>
-                  <Map />
                 </div>
               </div>
             </div>

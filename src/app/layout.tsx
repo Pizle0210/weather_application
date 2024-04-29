@@ -28,13 +28,11 @@ export default function RootLayout({
           disableTransitionOnChange
           enableColorScheme={true}
         >
-          <Suspense>
             <Navbar />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24 mx-[1rem] lg:mx-[3rem] xl:mx-[7rem] 2xl:mx-[12rem]">
+            <main className="flex h-screen flex-col items-center py-24  px-24 container mx-auto">
               {children}
             </main>
             <Footer />
-          </Suspense>
         </ThemeProvider>
       </body>
     </html>
