@@ -62,44 +62,45 @@ export const icons = {
 export const defaultState = [
   {
     name: "Chicago",
-    country: "USA",
+    country: "US",
     state: "Illinois",
     lat: 40.6331,
     lon: 89.3985,
   },
   {
     name: "Culiacán",
-    country: "Mexico",
+    country: "MX",
     state: "Sinaloa",
     lat: 24.8091,
     lon: 107.394,
   },
   {
     name: "Madrid",
-    country: "Spain",
+    country: "ES",
     state: "Madrid",
     lat: 40.4168,
     lon: 3.7038,
   },
   {
     name: "Abuja",
-    country: "Nigeria",
+    country: "NG",
     state: "FCT",
     lat: 9.0563,
     lon: 7.4985,
   },
   {
     name: "Tokyo",
-    country: "Japan",
+    country: "JP",
     state: "Kanto",
     lat: 35.6764,
     lon: 139.65,
   },
   {
     name: "Paris",
-    country: "France",
+    country: "FR",
     state: "Île-de-France",
     lat: 48.8566,
     lon: 2.3522,
   },
-] as const;
+];
+

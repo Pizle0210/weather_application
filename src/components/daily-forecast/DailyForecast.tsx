@@ -15,12 +15,12 @@ type Forecast = {
 };
 
 export default function DailyForecast() {
-  const { forecast, fiveDaysForecast } = useGlobalContext();
+  const { forecast, hourlyForecast } = useGlobalContext();
   const { weather } = forecast ?? {};
-  const { list, city } = fiveDaysForecast ?? {};
+  const { list, city } = hourlyForecast ?? {};
   console.log(list, city);
 
-  if (!fiveDaysForecast || !city || !list) {
+  if (!hourlyForecast || !city || !list) {
     return (
       <Skeleton className="h-[12rem] w-full col-span-2 md:col-span-full" />
     );
@@ -73,7 +73,7 @@ export default function DailyForecast() {
                     key={forecast.dt_txt}
                     className="flex flex-col cursor-grab gap-8 basis-[6.5rem] "
                   >
-                    <p className="text-gray-300">
+                    <p className="dark:text-gray-300">
                       {moment(forecast.dt_txt).format("HH:mm")}
                     </p>
                     <p>{showIcons()}</p>

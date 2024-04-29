@@ -14,7 +14,7 @@ export default function Temperature() {
   const { main: mainWeather, description } = (weather && weather.at(0)) ?? {};
 
   const currentTemperature = kelvinToCelsius(main?.temp);
-  const minTemperature = kelvinToCelsius(main?.temp_min); // Suggestion 1
+  const minTemperature = kelvinToCelsius(main?.temp_min);
   const maxTemperature = kelvinToCelsius(main?.temp_max);
 console.log(name); 
   const showIcons = () => {
@@ -48,22 +48,22 @@ console.log(name);
       {!forecast || !weather ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex justify-between rounded-lg flex-col p-3">
+        <div className="flex justify-between rounded-lg flex-col p-2">
           <p className="flex justify-between items-center mb-1">
             <span className="font-medium text-white text-lg">{currentDay}</span>
             <span className="font-medium text-white text-lg">{localTime}</span>
           </p>
-          <p className="flex space-x-1 font-bold mb-5">
-            <span>{name}</span>
-            <span>{icons.navigation}</span>
+          <p className="flex space-x-2 font-bold mb-5">
+            <span className="text-white">{name}</span>
+            <span className="text-white">{icons.navigation}</span>
           </p>
           <p className="self-center">
-            <span className="text-7xl max-md:text-4xl font-extrabold tracking-wide">
+            <span className="text-7xl max-md:text-4xl text-yellow-500 dark:text-white font-extrabold tracking-wide">
               {currentTemperature}℃{" "}
             </span>
           </p>
-          <div className="">
-            <div className="flex flex-row md:space-x-3 items-center mb-1">
+          <div className="text-white">
+            <div className="flex flex-row space-x-2 md:space-x-3 items-center mb-1">
               <span>{showIcons()}</span>
               <p className="text-lg font-medium">{description}</p>
             </div>

@@ -86,3 +86,20 @@
     rgba(178, 34, 34, 1) 100%
   );
 }
+
+
+@media screen and (max-width:767px) {
+  .btn-group{
+    position: fixed;
+    bottom: 3%;
+    right: 1rem;
+    z-index: 1000;
+     
+  }
+  .search-container{
+    width: 100%;
+  }
+  .search-btn{
+    width: 100%;
+  }
+}
